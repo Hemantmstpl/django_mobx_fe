@@ -42,3 +42,9 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Backend basepath url
+
+create .env file at root and add the backend base path as below example
+
+REACT_APP_BACKEND_PATH_ENV=http://d8e607fe.ngrok.io/api/

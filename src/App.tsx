@@ -1,26 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import StoreProvider from './mobxStore';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import { AuthLoginPage } from './module/Login';
+import { TicketsPage } from './module/Ticket';
+import { RestaurentPage } from './module/Restaurent'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const redirect = (): JSX.Element => {
+    return <Redirect from="*" to='/' />;
+};
 
-export default App;
+export const App: React.FC = (): JSX.Element => (
+    <StoreProvider>
+        <Switch>
+            <Route
+                path='/login'
+                component={AuthLoginPage}
+            />
+            <Route
+                path='/tickets'
+                component={(props: any) => <TicketsPage {...props}/>}
+            />
+            <Route
+                path='/restaurent'
+                component={RestaurentPage}
+            />
+            {/* <Route
+                path={APP_ROUTES.CONTRACTS}
+                component={ContractsModule}
+            /> */}
+
+            {redirect()}
+        </Switch>
+    </StoreProvider>
+);
