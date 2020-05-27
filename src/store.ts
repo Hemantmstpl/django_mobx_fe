@@ -1,12 +1,14 @@
 // import { myAccountStore, MyAccountStoreInterface } from '@modules/my-account/stores';
 import { AuthLoginStores, AuthLoginStoresInterface } from './module/Login/stores';
 import { TicketStores, TicketStoresInterface } from './module/Ticket/stores';
+import { PurchaseStores, PurchaseStoresInterface } from './module/Purchase/store';
 export interface AuthStoreInterface {
     login: AuthLoginStoresInterface;
 }
 
 export interface AppStoreInterface {
   ticket: TicketStoresInterface;
+  buy: PurchaseStoresInterface;
 }
 
 export interface CreateStoreInterface {
@@ -27,6 +29,7 @@ export const createStore = (): CreateStoreInterface => {
         get appStore(): AppStoreInterface{
           return {
             ticket: TicketStores,
+            buy: PurchaseStores
           }
         }
     };

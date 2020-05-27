@@ -4,6 +4,7 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import { AuthLoginPage } from './module/Login';
 import { TicketsPage } from './module/Ticket';
 import { RestaurentPage } from './module/Restaurent'
+import { PurchasePage } from './module/Purchase'
 
 const redirect = (): JSX.Element => {
     return <Redirect from="*" to='/' />;
@@ -24,11 +25,10 @@ export const App: React.FC = (): JSX.Element => (
                 path='/restaurent'
                 component={RestaurentPage}
             />
-            {/* <Route
-                path={APP_ROUTES.CONTRACTS}
-                component={ContractsModule}
-            /> */}
-
+            <Route
+                path='/purchase'
+                component={PurchasePage}
+            />
             {redirect()}
         </Switch>
     </StoreProvider>
