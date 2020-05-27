@@ -1,7 +1,7 @@
 import { createStore } from '../../store';
 import { toast } from 'react-toastify';
 import { TicketsServices } from './services';
-import { TicketCreateData, TicketStoresInterface, RestaurentGetData, TicketGetData, purchaseDetail, paramData } from './stores'
+import { TicketCreateData, TicketStoresInterface, RestaurentGetData, TicketGetData, purchaseDetail } from './stores'
 
 
 export class TicketsActions {

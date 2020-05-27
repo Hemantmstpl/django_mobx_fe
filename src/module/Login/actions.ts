@@ -17,7 +17,6 @@ export class AuthLoginActions {
 
         try {
             const tokenResponse: any = await AuthLoginServices.getToken(login.authData);
-            console.log(tokenResponse, '#####');
             localStorage.setItem('token', tokenResponse.data.access);
             localStorage.setItem('refresh', tokenResponse.data.refresh);
             login.accessToken = tokenResponse.data.access;
@@ -39,7 +38,6 @@ export class AuthLoginActions {
     
             try {
                 const tokenResponse: any = await AuthLoginServices.refreshToken();
-                console.log(tokenResponse, '#####');
                 localStorage.setItem('token', tokenResponse.data.access);
                 localStorage.setItem('refresh', tokenResponse.data.refresh);
                 login.accessToken = tokenResponse.data.access;
