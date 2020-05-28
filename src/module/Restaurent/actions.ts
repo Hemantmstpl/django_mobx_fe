@@ -1,10 +1,7 @@
 import { createStore } from '../../store';
-import { toJS } from 'mobx';
 import { RestaurentServices } from './services';
 import history from '../../utils/history';
 import { TicketStoresInterface, headerInterface } from '../Ticket/stores'
-// import { AuthLoginStoresInterface } from '../Login/stores';
-// import AuthTokenResponse = AuthApi.AuthTokenResponse;
 
 export class RestaurentsActions {
 

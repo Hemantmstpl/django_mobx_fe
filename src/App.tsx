@@ -24,11 +24,6 @@ export const App: React.FC = (): JSX.Element => (
                 path='/restaurent'
                 component={RestaurentPage}
             />
-            {/* <Route
-                path={APP_ROUTES.CONTRACTS}
-                component={ContractsModule}
-            /> */}
-
             {redirect()}
         </Switch>
     </StoreProvider>
