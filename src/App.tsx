@@ -6,7 +6,7 @@ import { TicketsPage } from './module/Ticket';
 import { RestaurentPage } from './module/Restaurent'
 
 const redirect = (): JSX.Element => {
-    return <Redirect from="*" to='/' />;
+    return <Redirect from="*" to='/login' />;
 };
 
 export const App: React.FC = (): JSX.Element => (
