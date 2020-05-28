@@ -16,7 +16,7 @@ export const RestaurentPage: React.FC = (): JSX.Element => {
     const {store} = React.useContext(storeContext);
     const ticket: TicketStoresInterface = store.appStore.ticket;
 
-    const onRestaurentSelect = (event: any): void => {
+    const onRestaurentSelect = (event: React.ChangeEvent<HTMLSelectElement>): void => {
       RestaurentsActions.setRestaurentData(event.currentTarget.value);
     }
     return useObserver(() => {

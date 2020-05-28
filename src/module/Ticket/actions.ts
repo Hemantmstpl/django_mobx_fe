@@ -1,23 +1,18 @@
 import { createStore } from '../../store';
 import { toast } from 'react-toastify';
 import { TicketsServices } from './services';
-import { TicketCreateData, TicketStoresInterface, RestaurentGetData, TicketGetData, purchaseDetail } from './stores'
+import { TicketCreateData, TicketStoresInterface, RestaurentGetData, headerInterface, purchaseDetail } from './stores'
 
 
 export class TicketsActions {
 
-  public static getHeaders = (): any => {
+  public static getHeaders = (): Partial<headerInterface> => {
     return {headers: {"Authorization": `Bearer ${localStorage.getItem('token')}`}};
 };
 
-  public static getStore = (): any => {
+  public static async getRestaurent(): Promise<void> {
     const { store } = createStore();
-    const ticketInfo: TicketStoresInterface = store.appStore.ticket;
-    return ticketInfo;
-  }
-
-  public static async getRestaurent(): Promise<any> {
-    const ticket = this.getStore()
+    const ticket: TicketStoresInterface = store.appStore.ticket;
     ticket.isLoading = true;
 
     try {
@@ -33,9 +28,10 @@ export class TicketsActions {
     ticket.isLoading = false;
 }
 
-  public static async getRestaurentTickets(): Promise<any> {
+  public static async getRestaurentTickets(): Promise<void> {
     const headers = this.getHeaders();
-    const ticket = this.getStore()
+    const { store } = createStore();
+    const ticket: TicketStoresInterface = store.appStore.ticket;
 
     ticket.isLoading = true;
     try {
@@ -47,16 +43,17 @@ export class TicketsActions {
   ticket.isLoading = false;
   }
 
-  public static async createRestaurentTickets(): Promise<any> {
+  public static async createRestaurentTickets(): Promise<void> {
     const headers = this.getHeaders();
-    const ticket = this.getStore()
+    const { store } = createStore();
+    const ticket: TicketStoresInterface = store.appStore.ticket;
     ticket.isLoading = true;
 
     try {
       const { newTicket: {name, max_purchase_count}, selectedRestaurent } = ticket
       const restaurentTicketResponse = await TicketsServices.postRestaurentTicket({id : selectedRestaurent.id, name: name, count: max_purchase_count, headers });
       ticket.newTicket.name="";
-      ticket.newTicket.max_purchase_count="";
+      ticket.newTicket.max_purchase_count=0;
       TicketsActions.getRestaurentTickets();
       toast.success('created ticket');
     } catch (error) {
@@ -73,21 +70,23 @@ export class TicketsActions {
 }
 
 public static setPurchaseDetail(newPurchaseData: Partial<purchaseDetail>): void {
-  const ticket = this.getStore()
+  const { store } = createStore();
+  const ticket: TicketStoresInterface = store.appStore.ticket;
   ticket.purchaseDetail = { ...ticket.purchaseDetail, ...newPurchaseData };
 }
 
   public static setRestaurentData(selectedRestaurentData: Partial<RestaurentGetData>): void {
     
-    const ticket = this.getStore()
-    const selectedRestarentDetail = ticket.restaurentData.filter((obj: { id: number; }) => {
+    const { store } = createStore();
+    const ticket: TicketStoresInterface = store.appStore.ticket;
+    const selectedRestarentDetail = ticket.restaurentData.filter((obj: any) => {
       return obj.id === +selectedRestaurentData
     })
     ticket.selectedRestaurent = { ...selectedRestarentDetail[0] };
     TicketsActions.getRestaurentTickets();
   }
 
-  public static setEditInfo(id: Partial<TicketGetData>): void {
+  public static setEditInfo(id: string): void {
     const { store } = createStore();
     const ticket: TicketStoresInterface = store.appStore.ticket;
     const filteredTicketDetail = ticket.ticketData.filter(obj => {
@@ -96,15 +95,16 @@ public static setPurchaseDetail(newPurchaseData: Partial<purchaseDetail>): void 
     ticket.selectedTicket = filteredTicketDetail[0];
   }
 
-  public static async buyTicket(param: { id: string; name: string; }): Promise<any> {
-    const ticket = this.getStore()
+  public static async buyTicket(param: { id: string; name: string; }): Promise<void> {
+    const { store } = createStore();
+    const ticket: TicketStoresInterface = store.appStore.ticket;
     ticket.isLoading = true;
 
     try {
       const { purchaseDetail: {email, count} } = ticket
       const restaurentTicketResponse = await TicketsServices.buyRestaurentTicket({...param, email, count});
       ticket.purchaseDetail.email="";
-      ticket.purchaseDetail.count="";
+      ticket.purchaseDetail.count=0;
       TicketsActions.getRestaurentTickets();
       toast.success('success purchsed ticket');
     } catch (error) {

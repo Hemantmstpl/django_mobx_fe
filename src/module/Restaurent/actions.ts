@@ -2,24 +2,24 @@ import { createStore } from '../../store';
 import { toJS } from 'mobx';
 import { RestaurentServices } from './services';
 import history from '../../utils/history';
-import { TicketStoresInterface, RestaurentGetData } from '../Ticket/stores'
+import { TicketStoresInterface, headerInterface } from '../Ticket/stores'
 // import { AuthLoginStoresInterface } from '../Login/stores';
 // import AuthTokenResponse = AuthApi.AuthTokenResponse;
 
 export class RestaurentsActions {
 
-  public static getHeaders = (): any => {
+  public static getHeaders = (): Partial<headerInterface> => {
     return {headers: {"Authorization": `Bearer ${localStorage.getItem('token')}`}};
 };
 
-  public static async getRestaurent(): Promise<any> {
+  public static async getRestaurent(): Promise<void> {
     const { store } = createStore();
     const ticket: TicketStoresInterface = store.appStore.ticket;
     ticket.isLoading = true;
 
     try {
         const headers = this.getHeaders();
-        const restaurentResponse: any = await RestaurentServices.getRestaurent(headers);
+        const restaurentResponse = await RestaurentServices.getRestaurent(headers);
         ticket.restaurentData = restaurentResponse.data;
         ticket.selectedRestaurent = restaurentResponse.data[0];
         RestaurentsActions.getRestaurentTickets();
@@ -29,13 +29,13 @@ export class RestaurentsActions {
     ticket.isLoading = false;
 }
 
-  public static async getRestaurentTickets(): Promise<any> {
+  public static async getRestaurentTickets(): Promise<void> {
     const headers = this.getHeaders();
     const { store } = createStore();
     const ticket: TicketStoresInterface = store.appStore.ticket;
     ticket.isLoading = true;
     try {
-      const restaurentTicketResponse: any = await RestaurentServices.getRestaurentTicket({id: ticket.selectedRestaurent.id , headers});
+      const restaurentTicketResponse = await RestaurentServices.getRestaurentTicket({id: ticket.selectedRestaurent.id , headers});
       ticket.ticketData = restaurentTicketResponse.data.results;
     } catch (error) {
         console.log(error);
@@ -43,7 +43,7 @@ export class RestaurentsActions {
   ticket.isLoading = false;
   }
 
-  public static setRestaurentData(selectedRestaurentData: Partial<RestaurentGetData>): void {
+  public static setRestaurentData(selectedRestaurentData: string): void {
     const { store } = createStore();
     const ticket: TicketStoresInterface = store.appStore.ticket;
     const selectedRestarentDetail = ticket.restaurentData.filter(obj => {

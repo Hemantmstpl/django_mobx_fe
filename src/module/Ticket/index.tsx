@@ -17,11 +17,11 @@ export const TicketsPage: React.FC = (props: any): JSX.Element => {
       TicketsActions.getRestaurentTickets();
     }, []);
     
-    const onChangeFormHandler = (event: any): void => {
+    const onChangeFormHandler = (event: React.SyntheticEvent<HTMLInputElement>): void => {
       TicketsActions.setNewTicketData({[event.currentTarget.id]: event.currentTarget.value});
     };
 
-    const onChangePurchaseHandler = (event: any): void => {
+    const onChangePurchaseHandler = (event: React.SyntheticEvent<HTMLInputElement>): void => {
       TicketsActions.setPurchaseDetail({[event.currentTarget.name]: event.currentTarget.value});
     };
 
@@ -30,7 +30,7 @@ export const TicketsPage: React.FC = (props: any): JSX.Element => {
       TicketsActions.createRestaurentTickets()
     };
 
-    const editTicket = (param: any): void => {
+    const editTicket = (param: string): void => {
       TicketsActions.setEditInfo(param);
     }
 

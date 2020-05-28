@@ -4,9 +4,6 @@ import { useObserver } from 'mobx-react-lite';
 
 export const AuthLoginPage: React.FC = (): JSX.Element => {
 
-    // const {store} = React.useContext(storeContext);
-    // const login: AuthLoginStoresInterface = store.authStore.login;
-
     const onChangeFormHandler = (event: { currentTarget: { id: string; value: string; }; }): void => {
         AuthLoginActions.setAuthorizationsData({[event.currentTarget.id]: event.currentTarget.value});
     };

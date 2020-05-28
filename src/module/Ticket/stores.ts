@@ -1,5 +1,11 @@
 import { observable } from 'mobx';
 
+export interface authHeaderDataInterface {
+  Authorization: string
+}
+export interface headerInterface {
+  headers: authHeaderDataInterface
+}
 export interface TicketGetData {
   id: string;
   name: string;

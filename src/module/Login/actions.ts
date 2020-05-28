@@ -10,13 +10,13 @@ import { LoginPostParams, AuthLoginStoresInterface } from './stores'
 
 export class AuthLoginActions {
 
-    public static async authorize(): Promise<any> {
+    public static async authorize(): Promise<void> {
         const { store } = createStore();
         const login: AuthLoginStoresInterface = store.authStore.login;
         login.isLoading = true;
 
         try {
-            const tokenResponse: any = await AuthLoginServices.getToken(login.authData);
+            const tokenResponse = await AuthLoginServices.getToken(login.authData);
             localStorage.setItem('token', tokenResponse.data.access);
             localStorage.setItem('refresh', tokenResponse.data.refresh);
             login.accessToken = tokenResponse.data.access;
@@ -31,13 +31,13 @@ export class AuthLoginActions {
         login.isLoading = false;
     }
 
-    public static async refreshTokens(): Promise<any> {
+    public static async refreshTokens(): Promise<void> {
         const { store } = createStore();
         const login: AuthLoginStoresInterface = store.authStore.login;
         login.isLoading = true;
     
             try {
-                const tokenResponse: any = await AuthLoginServices.refreshToken();
+                const tokenResponse = await AuthLoginServices.refreshToken();
                 localStorage.setItem('token', tokenResponse.data.access);
                 localStorage.setItem('refresh', tokenResponse.data.refresh);
                 login.accessToken = tokenResponse.data.access;
