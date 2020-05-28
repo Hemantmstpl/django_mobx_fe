@@ -6,13 +6,13 @@ import { toast } from 'react-toastify';
 
 export class PurchaseActions {
 
-  public static async getAllTickets(): Promise<any> {
+  public static async getAllTickets(): Promise<void> {
     const { store } = createStore();
     const buy: PurchaseStoresInterface = store.appStore.buy;
     buy.isLoading = true;
     // console.log('heyy', toJS(buy));
     try {
-      const allTicketResponse: any = await PurchaseServices.getAllTicket();
+      const allTicketResponse = await PurchaseServices.getAllTicket();
       // console.log(allTicketResponse, 'tickGetResponse');
       buy.ticketData = allTicketResponse.data.results;
       buy.selectedTicket = allTicketResponse.data.results[0];
@@ -23,7 +23,7 @@ export class PurchaseActions {
   buy.isLoading = false;
   }
 
-  public static async buyTicket(): Promise<any> {
+  public static async buyTicket(): Promise<void> {
     const { store } = createStore();
     const buy: PurchaseStoresInterface = store.appStore.buy;
     buy.isLoading = true;
@@ -44,7 +44,7 @@ export class PurchaseActions {
   buy.isLoading = false;
   }
 
-  public static setSelectedTicketData(selectedTicketData: Partial<TicketData>): void {
+  public static setSelectedTicketData(selectedTicketData: string): void {
     const { store } = createStore();
     const buy: PurchaseStoresInterface = store.appStore.buy;
     const filteredTicketDetail = buy.ticketData.filter(obj => {

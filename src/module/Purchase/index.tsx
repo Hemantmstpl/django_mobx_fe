@@ -14,11 +14,11 @@ export const PurchasePage: React.FC = (): JSX.Element => {
     const {store} = React.useContext(storeContext);
     const buy: PurchaseStoresInterface = store.appStore.buy;
 
-    const onTicketSelect = (event: any): void => {
+    const onTicketSelect = (event: React.ChangeEvent<HTMLSelectElement>): void => {
       PurchaseActions.setSelectedTicketData(event.currentTarget.value);
     }
 
-    const onChangePurchaseHandler = (event: any): void => {
+    const onChangePurchaseHandler = (event: React.SyntheticEvent<HTMLInputElement>): void => {
       PurchaseActions.setPurchaseDetail({[event.currentTarget.name]: event.currentTarget.value});
     };
 
@@ -40,9 +40,9 @@ export const PurchasePage: React.FC = (): JSX.Element => {
             </div>
               Selected Ticket Info Section<br />
             { buy.selectedTicket.code !== '' && <div>
-              Name: {buy.selectedTicket.name}
-              Restaurent: {buy.selectedTicket.restaurant}
-              Available Qty: {buy.selectedTicket.available_quantity}
+              Name: {buy.selectedTicket.name}<br />
+              Restaurent: {buy.selectedTicket.restaurant}<br />
+              Available Qty: {buy.selectedTicket.available_quantity}<br/>
             </div>}
             <div>
               Purchase details<br/>
