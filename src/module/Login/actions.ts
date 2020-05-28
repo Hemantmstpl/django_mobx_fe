@@ -1,8 +1,5 @@
 import { createStore } from '../../store';
 import history from '../../utils/history';
-// import { AuthApi } from '@core/services/api/endpoints/auth-api-class';
-// import { StorageService } from '@core/services/storage-service';
-// import { APP_ROUTES } from '@core/constants/app-routes';
 import { AuthLoginServices } from './services';
 
 import { LoginPostParams, AuthLoginStoresInterface } from './stores'

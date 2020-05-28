@@ -1,8 +1,4 @@
 import Api from '../../utils/api';
-// import { AUTH_ROUTES_CONSTANTS } from '@modules/auth/auth-routes-constants';
-// import { AuthApi } from '@services/api/endpoints/auth-api-class';
-// import AuthPostParams = AuthApi.AuthPostParams;
-// import AuthTokenResponse = AuthApi.AuthTokenResponse;
 export interface loginSubData {
     data: loginDataInterface
 }
