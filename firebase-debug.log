@@ -1,0 +1,50 @@
+[debug] [2020-05-28T09:58:44.665Z] ----------------------------------------------------------------------
+[debug] [2020-05-28T09:58:44.671Z] Command:       /Users/ibox/.nvm/versions/node/v11.10.1/bin/node /usr/local/bin/firebase init
+[debug] [2020-05-28T09:58:44.671Z] CLI Version:   4.0.0
+[debug] [2020-05-28T09:58:44.672Z] Platform:      darwin
+[debug] [2020-05-28T09:58:44.672Z] Node Version:  v11.10.1
+[debug] [2020-05-28T09:58:44.673Z] Time:          Thu May 28 2020 15:28:44 GMT+0530 (India Standard Time)
+[debug] [2020-05-28T09:58:44.673Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2020-05-28T09:58:44.720Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] [2020-05-28T09:58:44.720Z] > authorizing via signed-in user
+[info] 
+     🔥🔥🔥🔥🔥🔥🔥🔥 🔥🔥🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥     🔥🔥🔥     🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥
+     🔥🔥        🔥🔥  🔥🔥     🔥🔥 🔥🔥       🔥🔥     🔥🔥  🔥🔥   🔥🔥  🔥🔥       🔥🔥
+     🔥🔥🔥🔥🔥🔥    🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥   🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥
+     🔥🔥        🔥🔥  🔥🔥    🔥🔥  🔥🔥       🔥🔥     🔥🔥 🔥🔥     🔥🔥       🔥🔥 🔥🔥
+     🔥🔥       🔥🔥🔥🔥 🔥🔥     🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥     🔥🔥  🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/ibox/Desktop/react/restaurenttest/restaurent_test
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2020-05-28T09:58:48.778Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-05-28T09:58:48.778Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token:
+   '1//0gFrxOVREFck8CgYIARAAGBASNwF-L9IrpoY56Z7hzCWCk2NjCDMWy77SvC6vAGhRwCiNbXK4NeP_No3DzcEbxD2qWdrd_HpndG4',
+  client_id:
+   '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope:
+   'email https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Thu May 28 2020 15:28:48 GMT+0530 (India Standard Time)
+[debug] [2020-05-28T09:58:49.190Z] <<< HTTP RESPONSE 200
+[debug] [2020-05-28T09:58:49.259Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects  
+  
+ Thu May 28 2020 15:28:49 GMT+0530 (India Standard Time)
+[debug] [2020-05-28T09:58:50.654Z] Error: certificate has expired
+    at TLSSocket.onConnectSecure (_tls_wrap.js:1181:34)
+    at TLSSocket.emit (events.js:197:13)
+    at TLSSocket.EventEmitter.emit (domain.js:446:20)
+    at TLSSocket._finishInit (_tls_wrap.js:672:8)
+[error] 
+[error] Error: Server Error. certificate has expired
